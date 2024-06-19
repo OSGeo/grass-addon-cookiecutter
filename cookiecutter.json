@@ -1,0 +1,7 @@
+{
+    "tool": "Addon name",
+    "__tool": "{{ cookiecutter.tool.replace('.', '_') }}",
+    "author_name": "Your name (or your organization/company/team)",
+    "email": "Your email",
+    "description": "A short description of the project."
+  }
