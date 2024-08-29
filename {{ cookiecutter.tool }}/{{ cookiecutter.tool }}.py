@@ -1,18 +1,20 @@
 #!/usr/bin/env python
 
-"""
-MODULE:    {{ cookiecutter.tool }}
+##############################################################################
+# MODULE:    {{ cookiecutter.tool }}
+#
+# AUTHOR(S): {{ cookiecutter.author_name }} <{{ cookiecutter.email }}>
+#
+# PURPOSE:   {{ cookiecutter.description }}
+#
+# COPYRIGHT: (C) {% now 'utc', '%Y' %} by {{ cookiecutter.author_name }} and the GRASS Development Team
+#
+#            This program is free software under the GNU General Public
+#            License (>=v2). Read the file COPYING that comes with GRASS
+#            for details.
+##############################################################################
 
-AUTHOR(S): {{ cookiecutter.author_name }} <{{ cookiecutter.email }}>
-
-PURPOSE:   {{ cookiecutter.description }}
-
-COPYRIGHT: (C) {% now 'utc', '%Y' %} by {{ cookiecutter.author_name }} and the GRASS Development Team
-
-This program is free software under the GNU General Public
-License (>=v2). Read the file COPYING that comes with GRASS
-for details.
-"""
+"""{{ cookiecutter.description }}"""
 
 # %module
 # % description: {{ cookiecutter.description }}
