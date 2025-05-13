@@ -1,5 +1,5 @@
-# GRASS GIS Addon Cookiecutter
-GRASS GIS addon template powered by
+# GRASS Addon Cookiecutter
+GRASS addon template powered by
 [Cookiecutter](https://github.com/cookiecutter/cookiecutter)
 helps you get started with developing a GRASS addon.
 
