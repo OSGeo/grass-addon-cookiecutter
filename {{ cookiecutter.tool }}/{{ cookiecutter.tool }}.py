@@ -27,10 +27,10 @@
 # %option G_OPT_R_OUTPUT
 # %end
 
-
 import sys
 import atexit
 import grass.script as gs
+from grass.tools import Tools
 
 
 def clean(name):
@@ -38,6 +38,10 @@ def clean(name):
 
 
 def main():
+
+    # initalize tools
+    tools = Tools()
+
     # get input options
     options, flags = gs.parser()
     input_raster = options["input"]
@@ -48,13 +52,20 @@ def main():
     atexit.register(clean, temporary_raster)
 
     # if changing computational region is needed, uncomment
-    # gs.use_temp_region()
+    # Use RegionManager/MaskManager as context managers for temporary region/mask:
+    # They automatically restore the previous region/mask on exit.
+    # Example:
+    # with gs.RegionManager():          # temporarily set computational region
+    #     with gs.MaskManager():        # temporarily set raster/vector mask
+    #         # perform region/mask-specific operations here
+    #         pass
 
     # verbose message with translatable string
     gs.verbose(_("Generating temporary raster {tmp}").format(tmp=temporary_raster))
+
     # run analysis
-    gs.run_command("r.surf.gauss", output=temporary_raster)
-    gs.mapcalc(f"{output_raster} = {input_raster} + {temporary_raster}")
+    tools.r_surf_gauss(output=temporary_raster)
+    tools.r_mapcalc(expression=f"{output_raster} = {input_raster} + {temporary_raster}")
 
     # save history into the output raster
     gs.raster_history(output_raster, overwrite=True)
